@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Loader from './Loader';
 import Modal from './Modal';
 import axios from "axios";
-import { PropTypes } from 'prop-types';
 
 import ImageGallery from './ImageGallery/ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
@@ -92,7 +91,6 @@ export class App extends Component {
 
 
   }
-
   handleItemClick = (evt) => {
 
     const { images } = this.state;
