@@ -50,7 +50,7 @@ export class App extends Component {
   onClickSubmit = async evt => {
     evt.preventDefault();
 
-    await this.setState({page:1});
+    await this.setState({ page: 1 });
 
     const response = await axios.get(URL + KEY + this.state.query + "&page=" + this.state.page + "&per_page=" + this.state.perpage);
 
@@ -76,14 +76,14 @@ export class App extends Component {
 
     const { page, currentInput } = this.state;
     await this.setState(() => { return { page: page + 1 } });
-    await this.setState({isLoading:true, loadMoreIsVisible:false});
+    await this.setState({ isLoading: true, loadMoreIsVisible: false });
     const response = await axios.get(URL + KEY + currentInput + "&page=" + this.state.page);
     const newArr = this.state.images;
     newArr.push(...response.data.hits);
 
     if (this.state.page >= response.data.totalHits / this.state.perpage) {
       this.setState({ loadMoreIsVisible: false })
-    }else this.setState({loadMoreIsVisible:true});
+    } else this.setState({ loadMoreIsVisible: true });
 
     this.setState({
       images: newArr,
@@ -123,15 +123,4 @@ export class App extends Component {
   }
 };
 
-App.propTypes = {
-  showModal: PropTypes.bool,
-  fullLink: PropTypes.string,
-  images: PropTypes.array,
-  isLoading: PropTypes.bool,
-  query: PropTypes.string,
-  page: PropTypes.number,
-  perpage: PropTypes.number,
-  currentImage: PropTypes.string,
-  loadMoreIsVisible: PropTypes.bool,
-}
 
